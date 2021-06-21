@@ -1,0 +1,28 @@
+spring:
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+      settings:
+        web-allow-others: true
+  include:
+    - swagger
+  datasource:
+    driverClassName: org.h2.Driver
+    url: jdbc:h2:mem:mydatabase
+    username: sa
+    password:
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+      ddl-auto: update
+
+
+server:
+  port: 8080 # This is the default port anyway, but you can change it here
+
+security:
+  jwt:
+    token:
+      base64-secret: MzZmYjdhMzRlZmJlMzcxMjViZDAxM2RlYzc4OTJkMTM0NWFmYWNhNzRlMzdiNDVjYjM4M2YwNmY1MDI3NmU0NmY4YjEwMzFiMGNiMDUxYTA2ODQ4YjM2OGM3OTM0MWRiNWRkMDdmNmRmZmY5M2QyYTY1ZjhjMGE3NjU1Y2Q4ZTU=
+      token-validity-in-seconds: 86400

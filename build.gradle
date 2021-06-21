@@ -1,0 +1,62 @@
+plugins {
+	id 'org.springframework.boot' version "${spring_boot_plugin_version}"
+	id 'io.spring.dependency-management' version "${spring_dependency_management_plugin_version}"
+	id 'java'
+}
+
+group = 'com.assignment'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.h2database:h2'
+	runtimeOnly 'mysql:mysql-connector-java'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.security:spring-security-test'
+	implementation "org.zalando:problem-spring-web:${zalando_version}"
+	annotationProcessor 'org.hibernate:hibernate-jpamodelgen'
+
+	// Lombok
+	compileOnly "org.projectlombok:lombok:${lombok_version}"
+	annotationProcessor "org.projectlombok:lombok:${lombok_version}"
+	testCompileOnly "org.projectlombok:lombok:${lombok_version}"
+	testAnnotationProcessor "org.projectlombok:lombok:${lombok_version}"
+
+	annotationProcessor "org.mapstruct:mapstruct-processor:${mapstruct_version}"
+	implementation "org.mapstruct:mapstruct:${mapstruct_version}"
+
+	// Swagger
+	implementation "io.springfox:springfox-swagger2:${springfox_version}"
+	implementation "io.springfox:springfox-swagger-ui:${springfox_version}"
+	implementation "io.springfox:springfox-bean-validators:${springfox_version}"
+
+	// Javax
+	implementation "javax.validation:validation-api:${javax_version}"
+
+	// JWT
+	implementation "io.jsonwebtoken:jjwt-api:${jjwt_version}"
+	implementation "io.jsonwebtoken:jjwt-impl:${jjwt_version}"
+	implementation "io.jsonwebtoken:jjwt-jackson:${jjwt_version}"
+
+
+	testCompile('org.springframework.boot:spring-boot-starter-test')
+	test {
+		useJUnitPlatform()
+	}
+
+}
+
